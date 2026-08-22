@@ -143,3 +143,843 @@ color: #cfcece !important;
     letter-spacing: -1.2px;
   }
 }
+
+/* =====================================================
+   ACCOUNT TYPE GRID
+===================================================== */
+
+.account-type-grid {
+  width: 100%;
+  display: grid;
+
+  /* Desktop: 2 cards per row */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 10px;
+}
+
+
+/* =====================================================
+   ACCOUNT CARD
+===================================================== */
+
+.account-card {
+  position: relative;
+
+  width: 100%;
+  min-width: 0;
+  height: 118px;
+
+  display: block;
+
+  border: 1.5px solid #dee2e6;
+  border-radius: 14px;
+
+  background: #ffffff;
+
+  cursor: pointer;
+  overflow: hidden;
+
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+
+  transition:
+    transform 0.28s cubic-bezier(.2,.8,.2,1),
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.3s ease;
+}
+
+
+/* Hide Radio */
+
+.account-card input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+/* =====================================================
+   INNER
+===================================================== */
+
+.account-card-inner {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 12px 8px;
+
+  z-index: 2;
+}
+
+
+/* =====================================================
+   HOVER
+===================================================== */
+
+.account-card:hover {
+  transform: translateY(-4px);
+
+  border-color: #02b290;
+
+  box-shadow:
+    0 10px 25px rgba(2,178,144,0.12);
+}
+
+
+/* =====================================================
+   ACTIVE
+===================================================== */
+
+.account-card.active {
+  transform:
+    translateY(-5px)
+    scale(1.025);
+
+  border-color: #02b290;
+
+  background:
+    linear-gradient(
+      145deg,
+      #f0fff9 0%,
+      #f7fffc 100%
+    );
+
+  box-shadow:
+    0 12px 30px rgba(2,178,144,0.20),
+    0 0 0 3px rgba(2,178,144,0.07);
+
+  animation:
+    accountCardPop 0.42s cubic-bezier(.2,.9,.3,1.4);
+}
+
+
+/* =====================================================
+   ICON
+===================================================== */
+
+.account-icon {
+  width: 43px;
+  height: 43px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  margin-bottom: 8px;
+
+  transition:
+    transform 0.3s cubic-bezier(.2,.9,.3,1.4),
+    background 0.25s ease,
+    color 0.25s ease,
+    box-shadow 0.3s ease;
+}
+
+
+/* Seller */
+
+.seller-icon {
+  color: #02b290;
+  background: rgba(2,178,144,0.10);
+}
+
+
+/* Buyer */
+
+.buyer-icon {
+  color: #6366f1;
+  background: rgba(99,102,241,0.10);
+}
+
+
+/* Agent */
+
+.agent-icon {
+  color: #f59e0b;
+  background: rgba(245,158,11,0.11);
+}
+
+
+/* =====================================================
+   ACTIVE ICON
+===================================================== */
+
+.account-card.active .account-icon {
+  transform:
+    translateY(-2px)
+    scale(1.12);
+
+  animation:
+    iconBounce 0.5s cubic-bezier(.2,.9,.3,1.4);
+}
+
+
+/* =====================================================
+   TEXT
+===================================================== */
+
+.account-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  min-width: 0;
+
+  transition:
+    transform 0.25s ease;
+}
+
+
+.account-text strong {
+  font-size: 13px;
+  font-weight: 800;
+
+  color: #111827;
+
+  line-height: 1.2;
+
+  margin-bottom: 4px;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+.account-text span {
+  display: block;
+
+  max-width: 100%;
+
+  font-size: 9px;
+
+  line-height: 1.25;
+
+  color: #6b7280;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* =====================================================
+   ACTIVE TEXT
+===================================================== */
+
+.account-card.active .account-text strong {
+  color: #02a986;
+
+  transform: translateY(-1px);
+}
+
+
+/* =====================================================
+   CHECK
+===================================================== */
+
+.account-check {
+  position: absolute;
+
+  top: 7px;
+  right: 7px;
+
+  width: 20px;
+  height: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #02b290;
+  color: #ffffff;
+
+  font-size: 11px;
+  font-weight: 900;
+
+  opacity: 0;
+
+  transform:
+    scale(0)
+    rotate(-90deg);
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.35s cubic-bezier(.2,.9,.3,1.5);
+}
+
+
+.account-card.active .account-check {
+  opacity: 1;
+
+  transform:
+    scale(1)
+    rotate(0deg);
+
+  animation:
+    checkPop 0.45s cubic-bezier(.2,.9,.3,1.5);
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 575px) {
+
+  .account-type-grid {
+
+    /* Mobile: 1 card per row */
+
+    grid-template-columns: 1fr;
+
+    gap: 9px;
+  }
+
+
+  .account-card {
+    height: 82px;
+    border-radius: 13px;
+  }
+
+
+  .account-card-inner {
+
+    flex-direction: row;
+
+    justify-content: flex-start;
+
+    text-align: left;
+
+    padding: 10px 14px;
+  }
+
+
+  .account-icon {
+
+    width: 46px;
+    height: 46px;
+
+    min-width: 46px;
+
+    margin-bottom: 0;
+    margin-right: 12px;
+
+    border-radius: 12px;
+  }
+
+
+  .account-text {
+
+    align-items: flex-start;
+
+    text-align: left;
+  }
+
+
+  .account-text strong {
+    font-size: 14px;
+  }
+
+
+  .account-text span {
+
+    font-size: 10px;
+
+    white-space: normal;
+  }
+
+
+  .account-check {
+
+    top: 50%;
+    right: 13px;
+
+    transform:
+      translateY(-50%)
+      scale(0)
+      rotate(-90deg);
+  }
+
+
+  .account-card.active {
+
+    transform:
+      translateY(-2px)
+      scale(1.015);
+  }
+
+
+  .account-card.active .account-check {
+
+    transform:
+      translateY(-50%)
+      scale(1)
+      rotate(0deg);
+  }
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 360px) {
+
+  .account-card {
+    height: 76px;
+  }
+
+  .account-icon {
+
+    width: 42px;
+    height: 42px;
+
+    min-width: 42px;
+
+    margin-right: 10px;
+  }
+
+  .account-text strong {
+    font-size: 13px;
+  }
+
+  .account-text span {
+    font-size: 9px;
+  }
+}
+
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+
+@keyframes accountCardPop {
+
+  0% {
+    transform:
+      translateY(0)
+      scale(0.96);
+  }
+
+  45% {
+    transform:
+      translateY(-7px)
+      scale(1.045);
+  }
+
+  75% {
+    transform:
+      translateY(-4px)
+      scale(1.018);
+  }
+
+  100% {
+    transform:
+      translateY(-5px)
+      scale(1.025);
+  }
+}
+
+
+@keyframes iconBounce {
+
+  0% {
+    transform:
+      scale(0.7)
+      rotate(-8deg);
+  }
+
+  45% {
+    transform:
+      scale(1.22)
+      rotate(5deg);
+  }
+
+  70% {
+    transform:
+      scale(1.08)
+      rotate(-2deg);
+  }
+
+  100% {
+    transform:
+      scale(1.12)
+      rotate(0deg);
+  }
+}
+
+
+@keyframes checkPop {
+
+  0% {
+    transform:
+      scale(0)
+      rotate(-90deg);
+  }
+
+  55% {
+    transform:
+      scale(1.25)
+      rotate(10deg);
+  }
+
+  100% {
+    transform:
+      scale(1)
+      rotate(0deg);
+  }
+}
+
+/* =====================================================
+   REGISTER INPUTS - SMALL / COMPACT
+===================================================== */
+
+.register-form .form-label {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #212529;
+}
+
+.register-form .form-control {
+  height: 40px;
+  min-height: 40px;
+  padding: 7px 11px;
+  font-size: 13px;
+  border-radius: 7px;
+}
+
+.register-form .form-control::placeholder {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+
+/* =====================================================
+   YOUTUBE VIDEO
+===================================================== */
+
+.register-youtube {
+  width: 100%;
+  margin-top: 12px;
+  margin-bottom: 14px;
+}
+
+.register-youtube-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #212529;
+  margin-bottom: 7px;
+}
+
+.register-youtube-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+
+  overflow: hidden;
+
+  border-radius: 10px;
+
+  background: #000;
+
+  box-shadow:
+    0 5px 18px rgba(0, 0, 0, 0.10);
+}
+
+.register-youtube-wrapper iframe {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  border: none;
+}
+
+
+/* =====================================================
+   ACCOUNT TYPE
+===================================================== */
+
+.account-type-grid {
+  width: 100%;
+
+  display: grid !important;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 9px;
+
+  margin-top: 8px;
+  margin-bottom: 14px;
+}
+
+
+/* =====================================================
+   ACCOUNT CARD
+===================================================== */
+
+.account-card {
+  position: relative;
+
+  width: 100%;
+  min-width: 0;
+
+  height: 105px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1.5px solid #dee2e6;
+
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  cursor: pointer;
+
+  overflow: hidden;
+
+  user-select: none;
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease;
+
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+/* Hover */
+
+.account-card:hover {
+  transform: translateY(-3px);
+
+  border-color: #02b290;
+
+  box-shadow:
+    0 8px 20px rgba(2, 178, 144, 0.12);
+}
+
+
+/* Active */
+
+.account-card.active {
+  transform:
+    translateY(-3px)
+    scale(1.02);
+
+  border-color: #02b290;
+
+  background:
+    linear-gradient(
+      145deg,
+      #f0fff9 0%,
+      #f7fffc 100%
+    );
+
+  box-shadow:
+    0 10px 25px rgba(2, 178, 144, 0.16),
+    0 0 0 3px rgba(2, 178, 144, 0.06);
+}
+
+
+/* =====================================================
+   ACCOUNT INNER
+===================================================== */
+
+.account-card-inner {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+
+/* =====================================================
+   ACCOUNT ICON
+===================================================== */
+
+.account-icon {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+
+  margin-bottom: 6px;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.account-card.active .account-icon {
+  transform: scale(1.08);
+}
+
+
+/* =====================================================
+   ACCOUNT TEXT
+===================================================== */
+
+.account-text {
+  font-size: 11px;
+
+  font-weight: 700;
+
+  color: #111827;
+
+  line-height: 1.2;
+}
+
+.account-card.active .account-text {
+  color: #02a986;
+}
+
+
+/* =====================================================
+   CREATE ACCOUNT BUTTON
+===================================================== */
+
+.register-submit {
+  width: 100%;
+
+  height: 40px;
+
+  margin: 3px 0 0 !important;
+
+  padding: 8px;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  border-radius: 8px;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 575px) {
+
+  .register-form {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  .register-form .form-label {
+    font-size: 12px;
+  }
+
+  .register-form .form-control {
+    height: 38px;
+    min-height: 38px;
+
+    padding: 6px 9px;
+
+    font-size: 12px;
+  }
+
+  .register-form .form-control::placeholder {
+    font-size: 11px;
+  }
+
+  .account-type-grid {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    gap: 7px;
+  }
+
+  .account-card {
+    height: 92px;
+
+    border-radius: 10px;
+  }
+
+  .account-icon {
+    width: 36px;
+    height: 36px;
+
+    border-radius: 9px;
+  }
+
+  .account-text {
+    font-size: 10px;
+  }
+
+  .register-youtube-title {
+    font-size: 12px;
+  }
+}
+
+
+/* =====================================================
+   VERY SMALL MOBILE
+===================================================== */
+
+@media (max-width: 360px) {
+
+  .account-type-grid {
+    grid-template-columns: 1fr;
+
+    gap: 7px;
+  }
+
+  .account-card {
+    height: 76px;
+  }
+
+  .account-card-inner {
+    flex-direction: row;
+
+    justify-content: flex-start;
+
+    padding: 8px 12px;
+
+    text-align: left;
+  }
+
+  .account-icon {
+    min-width: 36px;
+
+    margin-bottom: 0;
+
+    margin-right: 10px;
+  }
+}
