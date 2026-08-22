@@ -9,6 +9,7 @@ import {
 } from "@mui/icons-material";
 import { FaEye, FaRegEyeSlash } from "react-icons/fa";
 import Link from "next/link";
+import Image from "next/image";
 
 function RegisterForm() {
   const [accountType, setAccountType] = useState("");
@@ -42,7 +43,7 @@ function RegisterForm() {
         <form className="px-3 px-sm-4 pt-4">
 
           {/* Heading */}
-
+         <Image className="d-block mx-auto mb-2" src="/icon.png" height={60} width={60} alt="logo"/>
           <h4 className="text-center mb-2">
             Create Account
           </h4>

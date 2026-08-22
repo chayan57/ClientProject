@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import { FaEye, FaRegEyeSlash } from "react-icons/fa";
 import { IconButton } from "@mui/material";
+import Image from "next/image";
 
 function LoginForm() {
   const [error, setError] = useState("");
@@ -32,7 +33,10 @@ function LoginForm() {
           maxWidth: "450px",
         }}
       >
+                 <Image className="d-block mx-auto mb-2" src="/icon.png" height={60} width={60} alt="logo"/>
+        
         <form className="px-4 pt-4">
+
           <h4 className="text-center mb-4">
             Login to your account
           </h4>
@@ -193,7 +197,7 @@ function LoginForm() {
         {/* Google Login */}
 
         <div className="mt-3 px-4">
-          <p>google login</p>
+          <p className="text-center">login with google</p>
         </div>
       </div>
     </section>
