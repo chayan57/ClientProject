@@ -1,3 +1,8 @@
+html,
+body {
+  overflow-x: hidden;
+}
+
 .notice-track {
           display: flex;
           align-items: center;

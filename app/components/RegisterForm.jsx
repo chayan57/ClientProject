@@ -21,23 +21,17 @@ function RegisterForm() {
   return (
     <section
       className="container-fluid d-flex justify-content-center align-items-center px-3"
-      style={{
-        minHeight: "100vh",
-        backgroundColor: "#f5efef",
-        paddingTop: "20px",
-        paddingBottom: "20px",
-        overflowX: "hidden",
-      }}
+      
     >
       <div
         className="w-100 rounded-3"
         style={{
           backgroundColor: "#ffffff",
-          maxWidth: "450px",
-          maxHeight: "95vh",
-          overflowY: "auto",
-          overflowX: "hidden",
-          paddingBottom: "20px",
+    maxWidth: "550px",
+    
+    overflowY: "auto",
+    overflowX: "hidden",
+    paddingBottom: "20px",
         }}
       >
         <form className="px-3 px-sm-4 pt-4">
