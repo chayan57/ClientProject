@@ -6,6 +6,7 @@ import Platform from "./components/Platform";
 import Reviews from "./components/Reviews";
 import Services from "./components/Services";
 import TopSellers from "./components/TopSellers";
+import Footer from "./components/Footer";
 
 function HomePage() {
   return (
@@ -19,6 +20,7 @@ function HomePage() {
         <TopSellers/>
         <Reviews/>
         <CallToAction/>
+        <Footer/>
       </main>
     </>
   );
