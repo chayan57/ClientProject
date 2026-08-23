@@ -13,7 +13,7 @@ function footer() {
       </p>
 
       <p style={{ fontWeight: "revert", margin: 0, textAlign: "center" }}>
-        Develop search chayan biswas developer
+        Develop by google search: chayan biswas developer
       </p>
     </section>
   );

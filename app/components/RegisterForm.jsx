@@ -16,21 +16,21 @@ function RegisterForm() {
   const [isShowPassword, setIsShowPassword] = useState(false);
 
   const [isShowConfirmPassword, setIsShowConfirmPassword] = useState(false);
+  const [showAccountVideo, setShowAccountVideo] = useState(false);
 
 
 const [showTelegramPopup, setShowTelegramPopup] = useState(false);
-
+const [showAccountVideoVideo, setShowAccountVideoVideo] = useState(false);
 useEffect(() => {
   setShowTelegramPopup(true);
 }, []);
-  // ================= CLIENT MOUNT =================
   
 
-  // ================= ACCOUNT TYPE =================
-
-  const handleAccountType = (type) => {
-    setAccountType(type);
-  };
+const handleAccountType = (type) => {
+  setAccountType(type);
+  setShowAccountVideoVideo(false);
+  setShowAccountVideo(true);
+};
 
   return (
     <>
@@ -463,8 +463,7 @@ useEffect(() => {
                 DATE OF BIRTH + REFER CODE
             ================================================= */}
 
-            <div className="row">
-              <div className="col-6 ">
+              <div className="col-6 mb-3">
                 <label htmlFor="dateOfBirth" className="form-label ">
                   Date of Birth
                 </label>
@@ -478,7 +477,7 @@ useEffect(() => {
                 />
               </div>
 
-              <div className="col-6">
+              <div className="col-6 mb-3">
                 <label htmlFor="referCode" className="form-label ">
                   Refer Code
                 </label>
@@ -491,16 +490,15 @@ useEffect(() => {
                   placeholder="Enter refer code"
                 />
               </div>
-            </div>
 
             {/* =================================================
                 PASSWORD + CONFIRM PASSWORD
             ================================================= */}
 
-            <div className="row g-2">
+          
               {/* Password */}
 
-              <div className="col-6 mb-3">
+              <div className="col-12 mb-3">
                 <label htmlFor="password" className="form-label ">
                   Password
                 </label>
@@ -532,7 +530,7 @@ useEffect(() => {
 
               {/* Confirm Password */}
 
-              <div className="col-6 mb-3">
+              <div className="col-12 mb-3">
                 <label htmlFor="confirmPassword" className="form-label ">
                   Confirm Password
                 </label>
@@ -561,7 +559,7 @@ useEffect(() => {
                   </IconButton>
                 </div>
               </div>
-            </div>
+            
 
             {/* =================================================
                      ACCOUNT TYPE
@@ -740,22 +738,178 @@ onClick={() => handleAccountType("agent")}
     YOUTUBE TUTORIAL
 ================================================= */}
 
-<div className="register-youtube">
+{/* =================================================
+    ACCOUNT VIDEO POPUP
+================================================= */}
 
-  <div className="register-youtube-title">
-    📺 Learn How EARNIFY HUB Works
+{showAccountVideo && (
+  <div
+    style={{
+      position: "fixed",
+      inset: 0,
+      zIndex: 99998,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      padding: "15px",
+      background: "rgba(0,0,0,0.65)",
+      backdropFilter: "blur(6px)",
+      WebkitBackdropFilter: "blur(6px)",
+    }}
+  >
+    <div
+      style={{
+        position: "relative",
+        width: "100%",
+        maxWidth: "600px",
+        maxHeight: "calc(100vh - 30px)",
+        overflowY: "auto",
+        background: "#ffffff",
+        borderRadius: "18px",
+        padding: "22px",
+        boxSizing: "border-box",
+        boxShadow: "0 25px 70px rgba(0,0,0,0.35)",
+      }}
+    >
+      {/* Close */}
+
+      <button
+        type="button"
+        onClick={() => setShowAccountVideo(false)}
+        style={{
+          position: "absolute",
+          top: "10px",
+          right: "10px",
+          width: "32px",
+          height: "32px",
+          border: "none",
+          borderRadius: "50%",
+          background: "#f1f5f9",
+          color: "#111827",
+          fontSize: "20px",
+          cursor: "pointer",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          zIndex: 5,
+        }}
+      >
+        ×
+      </button>
+
+      {/* Question */}
+
+      <div
+        style={{
+          textAlign: "center",
+          padding: "10px 25px 18px",
+        }}
+      >
+        <h5
+          style={{
+            margin: "0 0 8px",
+            fontSize: "18px",
+            fontWeight: 800,
+            color: "#111827",
+          }}
+        >
+          আপনি এই কাজ সম্পর্কে বিস্তারিত জানতে চান?
+        </h5>
+
+        <p
+          style={{
+            margin: 0,
+            fontSize: "13px",
+            color: "#6b7280",
+          }}
+        >
+          {accountType === "seller" && "Seller Account সম্পর্কে বিস্তারিত ভিডিও দেখুন"}
+          {accountType === "buyer" && "Buyer Account সম্পর্কে বিস্তারিত ভিডিও দেখুন"}
+          {accountType === "agent" && "Agent Account সম্পর্কে বিস্তারিত ভিডিও দেখুন"}
+        </p>
+      </div>
+
+      {/* Buttons */}
+
+      {!showAccountVideoVideo && (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            gap: "10px",
+            marginBottom: "10px",
+          }}
+        >
+          <button
+            type="button"
+            onClick={() => setShowAccountVideoVideo(true)}
+            style={{
+              border: "none",
+              borderRadius: "8px",
+              padding: "9px 28px",
+              background: "#02B290",
+              color: "#ffffff",
+              fontSize: "14px",
+              fontWeight: 700,
+              cursor: "pointer",
+            }}
+          >
+            হ্যাঁ
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setShowAccountVideo(false)}
+            style={{
+              border: "1px solid #d1d5db",
+              borderRadius: "8px",
+              padding: "9px 28px",
+              background: "#ffffff",
+              color: "#374151",
+              fontSize: "14px",
+              fontWeight: 700,
+              cursor: "pointer",
+            }}
+          >
+            না
+          </button>
+        </div>
+      )}
+
+      {/* Video */}
+
+      {showAccountVideoVideo && (
+        <div
+          style={{
+            width: "100%",
+            aspectRatio: "16 / 9",
+            overflow: "hidden",
+            borderRadius: "12px",
+            background: "#000000",
+          }}
+        >
+          <iframe
+            src={
+              accountType === "seller"
+                ? "https://www.youtube.com/embed/wHfSba9XVXI"
+                : accountType === "buyer"
+                ? "https://www.youtube.com/embed/Z1zWG0OFSJk"
+                : "https://www.youtube.com/embed/o1fBCbLh6LM"
+            }
+            title={`${accountType} account tutorial`}
+            style={{
+              width: "100%",
+              height: "100%",
+              border: "none",
+            }}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          />
+        </div>
+      )}
+    </div>
   </div>
-
-  <div className="register-youtube-wrapper">
-    <iframe
-  src="https://www.youtube.com/embed/wHfSba9XVXI"
-  title="EARNIFY HUB Tutorial"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-  allowFullScreen
-/>
-  </div>
-
-</div>
+)}
 
             {/* =================================================
                 CREATE ACCOUNT
