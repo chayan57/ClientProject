@@ -45,6 +45,10 @@ export default function Navbar() {
 
           {/* Desktop Buttons */}
           <div className="d-none d-lg-flex align-items-center gap-4">
+
+            <Link className="text-light" href="/selerDashboard">
+seler
+</Link>
             <Link
               className="text-light text-decoration-none desktopLogin"
               href="/login"
@@ -68,10 +72,10 @@ export default function Navbar() {
           {/* Mobile Button */}
           
 <div className="d-flex d-lg-none align-items-center gap-3">
-<Link href="/selerDashboard">
+
+  <Link className="text-light" href="/selerDashboard">
 seler
 </Link>
-  
   <Link
     href="/login"
     className="text-light text-decoration-none mobile-login"
@@ -99,6 +103,9 @@ seler
               padding: "15px 0 20px",
             }}
           >
+            <Link className="text-light" href="/selerDashboard">
+seler
+</Link>
             <Link
               className="text-light text-decoration-none"
               href="/login"
