@@ -68,6 +68,10 @@ export default function Navbar() {
           {/* Mobile Button */}
           
 <div className="d-flex d-lg-none align-items-center gap-3">
+<Link href="/selerDashboard">
+seler
+</Link>
+  
   <Link
     href="/login"
     className="text-light text-decoration-none mobile-login"
