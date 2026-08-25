@@ -582,7 +582,7 @@ body {
 .seller-menu-item {
   width: 100%;
   min-height: 58px;
-
+text-decoration: none;
   border: 1px solid #d8cdec;
 
   background: rgba(255, 255, 255, 0.12);
@@ -674,7 +674,7 @@ body {
 
   padding: 18px 25px 30px;
 
-  background: #f4f5f7;
+  background: #000c24;
 }
 
 /* =====================================================
@@ -699,7 +699,7 @@ body {
 }
 
 .seller-notice-label {
-  background: #18ad61;
+  background: #0033b4;
 
   padding: 8px 12px;
 
@@ -860,8 +860,8 @@ body {
 
   background: linear-gradient(
     90deg,
-    #6637ed,
-    #d92fa9
+    rgb(0, 56, 161),
+    rgb(3, 29, 92)
   );
 
   color: #ffffff;
@@ -1046,7 +1046,7 @@ body {
 ===================================================== */
 
 .seller-level-section {
-  background: #ffffff;
+  background: #ffff;
 
   border-radius: 7px;
 
@@ -1064,8 +1064,8 @@ body {
 
   background: linear-gradient(
     90deg,
-    #6c35eb,
-    #d82ca7
+    rgb(8, 69, 209),
+    rgb(5, 42, 128)
   );
 
   color: #ffffff;
@@ -1254,7 +1254,7 @@ body {
 }
 
 .submit-btn {
-  background: #13a856;
+  background: hsl(233, 80%, 37%);
   color: #ffffff;
 }
 

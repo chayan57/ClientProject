@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import {
   FaHome,
@@ -33,48 +34,65 @@ import {
 export default function SellerDashboard() {
   const [menuOpen, setMenuOpen] = useState(false);
 
+
+
   const menuItems = [
   {
     name: "Dashboard",
     icon: <FaHome />,
     className: "icon-dashboard",
+    link:"/dashboard",
   },
   {
     name: "My Team Leaders",
     icon: <FaGlobe />,
     className: "icon-team",
+    link:"/teamLeaders",
   },
   {
     name: "My Tasks",
     icon: <FaTools />,
     className: "icon-tasks",
+        link: "/mytask",
+
   },
   {
     name: "Payment",
     icon: <FaCreditCard />,
     className: "icon-payment",
+        link: "/payment",
+
   },
   {
     name: "Facebook Id Sell",
     icon: <FaFacebookF />,
     className: "icon-facebook",
+        link: "/facebookIdSell",
+
   },
   {
     name: "My Job",
     icon: <FaClipboardList />,
     className: "icon-job",
+        link: "/myjob",
+
   },
   {
     name: "Withdraw",
     icon: <FaMoneyBillWave />,
     className: "icon-withdraw",
+    link: "/withdraw",
   },
   {
     name: "Gmail sell",
     icon: <FaEnvelope />,
     className: "icon-gmail",
+        link: "/gmailSell",
+
   },
 ];
+
+
   return (
     <div className="seller-dashboard">
       {/* ================= MOBILE TOP BAR ================= */}
@@ -172,8 +190,8 @@ export default function SellerDashboard() {
         {/* ================= MENU ITEMS ================= */}
         <nav className="seller-menu-list">
           {menuItems.map((item, index) => (
-            <button
-              type="button"
+            <Link
+            href={item.link}
               key={item.name}
               className={`seller-menu-item ${
                 index === 0 ? "seller-menu-active" : ""
@@ -185,7 +203,7 @@ export default function SellerDashboard() {
               </span>
 
               <span className="seller-menu-item-text">{item.name}</span>
-            </button>
+            </Link>
           ))}
         </nav>
       </aside>
