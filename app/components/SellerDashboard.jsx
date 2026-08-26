@@ -33,65 +33,58 @@ import {
 
 export default function SellerDashboard() {
   const [menuOpen, setMenuOpen] = useState(false);
-
-
+  const [activeMenu, setActiveMenu] = useState("Dashboard");
 
   const menuItems = [
-  {
-    name: "Dashboard",
-    icon: <FaHome />,
-    className: "icon-dashboard",
-    link:"/dashboard",
-  },
-  {
-    name: "My Team Leaders",
-    icon: <FaGlobe />,
-    className: "icon-team",
-    link:"/teamLeaders",
-  },
-  {
-    name: "My Tasks",
-    icon: <FaTools />,
-    className: "icon-tasks",
-        link: "/mytask",
-
-  },
-  {
-    name: "Payment",
-    icon: <FaCreditCard />,
-    className: "icon-payment",
-        link: "/payment",
-
-  },
-  {
-    name: "Facebook Id Sell",
-    icon: <FaFacebookF />,
-    className: "icon-facebook",
-        link: "/facebookIdSell",
-
-  },
-  {
-    name: "My Job",
-    icon: <FaClipboardList />,
-    className: "icon-job",
-        link: "/myjob",
-
-  },
-  {
-    name: "Withdraw",
-    icon: <FaMoneyBillWave />,
-    className: "icon-withdraw",
-    link: "/withdraw",
-  },
-  {
-    name: "Gmail sell",
-    icon: <FaEnvelope />,
-    className: "icon-gmail",
-        link: "/gmailSell",
-
-  },
-];
-
+    {
+      name: "Dashboard",
+      icon: <FaHome />,
+      className: "icon-dashboard",
+      link: "/dashboard",
+    },
+    {
+      name: "My Team Leaders",
+      icon: <FaGlobe />,
+      className: "icon-team",
+      link: "/teamLeaders",
+    },
+    {
+      name: "My Tasks",
+      icon: <FaTools />,
+      className: "icon-tasks",
+      link: "/mytask",
+    },
+    {
+      name: "Payment",
+      icon: <FaCreditCard />,
+      className: "icon-payment",
+      link: "/payment",
+    },
+    {
+      name: "Facebook Id Sell",
+      icon: <FaFacebookF />,
+      className: "icon-facebook",
+      link: "/facebookIdSell",
+    },
+    {
+      name: "My Job",
+      icon: <FaClipboardList />,
+      className: "icon-job",
+      link: "/myjob",
+    },
+    {
+      name: "Withdraw",
+      icon: <FaMoneyBillWave />,
+      className: "icon-withdraw",
+      link: "/withdraw",
+    },
+    {
+      name: "Gmail sell",
+      icon: <FaEnvelope />,
+      className: "icon-gmail",
+      link: "/gmailSell",
+    },
+  ];
 
   return (
     <div className="seller-dashboard">
@@ -191,12 +184,15 @@ export default function SellerDashboard() {
         <nav className="seller-menu-list">
           {menuItems.map((item, index) => (
             <Link
-            href={item.link}
+              href={item.link}
               key={item.name}
               className={`seller-menu-item ${
-                index === 0 ? "seller-menu-active" : ""
+                activeMenu === item.name ? "seller-menu-active" : ""
               }`}
-              onClick={() => setMenuOpen(false)}
+             onClick={() => {
+  setActiveMenu(item.name);
+  setMenuOpen(false);
+}}
             >
               <span className={`seller-menu-item-icon ${item.className || ""}`}>
                 {item.icon}
